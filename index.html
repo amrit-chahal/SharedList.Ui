@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0,  maximum-scale=1, user-scalable=no"
+    />
+    <title>Sharedlist</title>
+    
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" async src="./api.js" ></script>
+  </head>
+  <body>
+    <header id="sl-header">
+      <img src="./logo3.png" id= "sl-logo" alt="logo">
+    </header>
+    <section>
+      <div id="sl-wrapper">
+        <div id="sl-checklist-list" style="display: none">
+          <div id="sl-checklist-picker">
+            <div id="sl-checklist-header">
+              <h3>My Checklists</h3>
+              <div id="sl-empty-list">
+                <span id="sl-sad-emoji">&#128459;</span>
+                <p>
+                  You currently have no checklists. Create one by clicking
+                  create new button
+                </p>
+              </div>
+            </div>
+            <div id="sl-checklist-list-container" style="display: none">
+              <ul id="sl-checklist-list-ul"></ul>
+            </div>
+          </div>
+          <div id="sl-newchecklist">
+            <button id="sl-newchecklist-btn">Create New</button>
+          </div>
+        </div>
+        <div id="sl-checklist-editor" style="display: none">
+          <div id="sl-mychecklists">
+            <button id="sl-mychecklists-btn">
+              <span id="sl-back-arrow">&#5176;&#5176;</span> My Checklists
+            </button>
+          </div>
+          <div id="sl-checklist-container" contenteditable="true">
+            <h3 id="sl-checklist-heading">New Checklist</h3>
+          </div>
+
+          <div id="sl-checklist-actions">
+            <button id="sl-save-btn" tabindex="0">Save</button>
+            <button id="sl-share-btn" tabindex="1">Share</button>
+            <button id="sl-delete-btn" tabindex="2">Delete</button>
+            <span></span>
+          </div>
+        </div>
+      </div>
+      <div id="sl-delete-modal">
+        <div id="sl-delete-modal-content">
+          <span id="sl-delete-modal-close-btn">&times;</span>
+          <h3>Are you sure you want to delete this checklist?</h3>
+
+          <div id="sl-delete-modal-actions">
+            <button id="sl-delete-modal-cancel">Cancel</button>
+            <button id="sl-delete-modal-confirm">Delete</button>
+          </div>
+        </div>
+      </div>
+      <div id="sl-share-modal">
+        <div id="sl-share-modal-content">
+          <span id="sl-share-modal-close-btn">&times;</span>
+          <h3>Please choose an option </h3>
+
+          <div id="sl-share-modal-actions">
+            <button id="sl-share-modal-readonly">Read Only</button>
+            <button id="sl-share-modal-readwrite">Read/Write</button>
+          </div>
+          <div id ="sl-share-link-container">
+            <input type="text" id="sl-share-link-box" readonly />
+            <span id="sl-copy-link-btn" title="copy">&#128203;</span>
+        </div>
+      </div>
+
+      <!--delete confirmation modal-->
+    </section>
+  </body>
+  
+  <script type="text/javascript" src="./main.js"></script>
+</html>
