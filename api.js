@@ -1,15 +1,5 @@
 const userCredentialsKey = 'User_Credentials';
-// const registerUser = async () => {
-//   try {
-//     const res = await fetch('https://localhost:7270/registeruser');
-//     const data = await res.json();
-//     await localStorage.setItem(userCredentialsKey, JSON.stringify(data));
-//     console.log('User registered');
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-// registerUser();
+
 const registerUser = () => {
   if (localStorage.getItem(userCredentialsKey) === null) {
     const xhr = new XMLHttpRequest();
@@ -24,44 +14,18 @@ const registerUser = () => {
   }
 };
 
-//   res.send();
-//   const data = JSON.parse(res.responseText);
-//   localStorage.setItem(userCredentialsKey, JSON.stringify(data));
-//   console.log('data stored');
+
 
 registerUser();
-// function registerUser(myCallback) {
-//   if (localStorage.getItem(userCredentialsKey) === null) {
-//     fetch('https://localhost:7270/registeruser')
-//       .then((res) => res.json())
-//       .then((data) => {
-//         myCallback(data);
-//       })
-//       .catch((err) => {
-//         console.log(err);
-//       });
-//   }
-// }
-// let userId;
-// let token;
-// const setCreds = (creds) => {
-//   localStorage.setItem(userCredentialsKey, JSON.stringify(creds));
-//   userId = localStorage.getItem(userCredentialsKey).userId;
-//   token = localStorage.getItem(userCredentialsKey).token;
-//   console.log('set creds');
-//   console.log(creds);
-// };
-// registerUser(setCreds);
+
 
 const userId = JSON.parse(localStorage.getItem(userCredentialsKey)).userId;
 const token = JSON.parse(localStorage.getItem(userCredentialsKey)).token;
-console.log(userId);
 
 const apiUrl = 'https://localhost:7270/';
 const registerUrl = apiUrl + 'registeruser';
 const upsertUrl = apiUrl + 'checklist/upsert';
 const getAllCheckListsUrl = apiUrl + 'checklist/getall?userId=' + userId;
-console.log(getAllCheckListsUrl);
 const getCheckListByIdUrl =
   apiUrl + 'checklist?userId=' + userId + '&checkListId=';
 const deleteCheckListByIdUrl =
@@ -72,7 +36,6 @@ const getCheckListShareCodeUrl = apiUrl + 'checklist/generatesharecode';
 const getCheckListFromCodeUrl =
   apiUrl + 'checklist/getchecklist?userid=' + userId + '&code=';
 
-console.log('api.js loaded 2');
 
 const getAllCheckLists = async () => {
   return new Promise(async (resolve, reject) => {
