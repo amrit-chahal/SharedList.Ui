@@ -1,9 +1,10 @@
 const userCredentialsKey = 'User_Credentials';
-
+const apiUrl = 'https://sharedlistapi20221120223742.azurewebsites.net/';
+const registerUrl = apiUrl + 'registeruser';
 const registerUser = () => {
   if (localStorage.getItem(userCredentialsKey) === null) {
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'https://localhost:7270/registeruser', false);
+    xhr.open('GET', registerUrl, false);
 
     xhr.send();
     const data = xhr.response;
@@ -22,8 +23,8 @@ registerUser();
 const userId = JSON.parse(localStorage.getItem(userCredentialsKey)).userId;
 const token = JSON.parse(localStorage.getItem(userCredentialsKey)).token;
 
-const apiUrl = 'https://localhost:7270/';
-const registerUrl = apiUrl + 'registeruser';
+
+
 const upsertUrl = apiUrl + 'checklist/upsert';
 const getAllCheckListsUrl = apiUrl + 'checklist/getall?userId=' + userId;
 const getCheckListByIdUrl =
