@@ -89,7 +89,7 @@ window.onload = async function () {
   activeState = getActiveState();
   activeCheckList = getActiveCheckList();
   if (activeState === 'editor') {
-    if (activeCheckList !== null) {
+    if (activeCheckList.id !== undefined) {
       getCheckListById(activeCheckList.id)
         .then((data) => {
           changeActiveState('editor', changeActiveStateCallback);
@@ -99,6 +99,8 @@ window.onload = async function () {
         .catch((err) => {
           console.log(err);
         });
+    } else {
+      populateChecklist(activeCheckList);
     }
   } else {
     changeActiveState('checklist', changeActiveStateCallback);
@@ -135,8 +137,6 @@ editorDiv.addEventListener('input', function (e) {
 });
 
 saveBtn.addEventListener('click', function () {
- 
-
   var checklist = checklistFromEditor();
   //disable save button
   saveBtn.disabled = true;
@@ -206,7 +206,6 @@ deleteModalCancelBtn.addEventListener('click', function () {
 deleteModalCloseBtn.addEventListener('click', function () {
   deleteModal.style.display = 'none';
 });
-
 
 deleteModalConfirmBtn.addEventListener('click', function () {
   deleteCheckListById(activeCheckList.id);
@@ -388,7 +387,6 @@ function listCheckLists() {
   }
 }
 
-
 function getCodeFromUrl() {
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
@@ -525,7 +523,3 @@ function removeSharedChecklist() {
   listCheckLists();
   changeActiveState('checklist', changeActiveStateCallback);
 }
-
-
-
-

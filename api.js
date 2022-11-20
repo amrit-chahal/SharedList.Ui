@@ -5,6 +5,8 @@ const registerUser = () => {
   if (localStorage.getItem(userCredentialsKey) === null) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', registerUrl, false);
+    //allow cors
+    xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
 
     xhr.send();
     const data = xhr.response;
@@ -15,15 +17,10 @@ const registerUser = () => {
   }
 };
 
-
-
 registerUser();
-
 
 const userId = JSON.parse(localStorage.getItem(userCredentialsKey)).userId;
 const token = JSON.parse(localStorage.getItem(userCredentialsKey)).token;
-
-
 
 const upsertUrl = apiUrl + 'checklist/upsert';
 const getAllCheckListsUrl = apiUrl + 'checklist/getall?userId=' + userId;
@@ -37,13 +34,13 @@ const getCheckListShareCodeUrl = apiUrl + 'checklist/generatesharecode';
 const getCheckListFromCodeUrl =
   apiUrl + 'checklist/getchecklist?userid=' + userId + '&code=';
 
-
 const getAllCheckLists = async () => {
   return new Promise(async (resolve, reject) => {
     try {
       const res = await fetch(getAllCheckListsUrl, {
         method: 'GET',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         }
@@ -63,6 +60,7 @@ const upsertCheckList = async (checklist) => {
       const res = await fetch(upsertUrl, {
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         },
@@ -81,11 +79,12 @@ const getCheckListById = async (checkListId) => {
       const res = await fetch(getCheckListByIdUrl + checkListId, {
         method: 'GET',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         }
       });
-      
+
       resolve(res.json());
     } catch (error) {
       reject(error);
@@ -98,6 +97,7 @@ const deleteCheckListById = async (checkListId) => {
       const res = await fetch(deleteCheckListByIdUrl + checkListId, {
         method: 'DELETE',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         },
@@ -119,6 +119,7 @@ const getCheckListFromCode = async (code) => {
       const res = await fetch(getCheckListFromCodeUrl + code, {
         method: 'GET',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         }
@@ -137,6 +138,7 @@ const generateCheckListShareCode = async (checklistId, permission) => {
       const res = await fetch(getCheckListShareCodeUrl, {
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         },
@@ -160,6 +162,7 @@ const updateSharedChecklist = async (checklist, code) => {
       const res = await fetch(updateSharedChecklistUrl + code, {
         method: 'POST',
         headers: {
+          'Access-Control-Allow-Origin': '*',
           'Content-Type': 'application/json',
           Authorization: token
         },
