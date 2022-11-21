@@ -7,14 +7,24 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0,  maximum-scale=1, user-scalable=no"
     />
-    <title>Sharedlist</title>
+    <title>Sharedlist | Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet"/>
     <link rel="icon" href="./sharedlist_icon16x16.png" type="image/icon type">
     <link rel="stylesheet" href="style.css" />
     <script type="text/javascript" async src="./api.js" ></script>
   </head>
   <body>
     <header id="sl-header">
-      <img src="./logo3.png" id= "sl-logo" alt="logo">
+      <div id="sl-header-logo">        
+      <a href="/" title="Sharedlist logo"><img src="./logo3.png" id= "sl-logo" alt="Sharedlist logo"></a>
+      </div> 
+      <div id="sl-header-right-nav">
+        <span id="sl-about"><a href="/about.html" title="about">&#65311;</a></span>
+        <a href="mailto:contact@amritchahal.com" title="report a bug"> &#128030;</a>
+       
+      </div> 
     </header>
     <section>
       <div id="sl-wrapper">
@@ -52,9 +62,12 @@
             <button id="sl-save-btn" tabindex="0">Save</button>
             <button id="sl-share-btn" tabindex="1">Share</button>
             <button id="sl-delete-btn" tabindex="2">Delete</button>
-            <span></span>
+            
           </div>
         </div>
+        <div id="sl-loading-spinner"></div>        
+        
+        
       </div>
       <div id="sl-delete-modal">
         <div id="sl-delete-modal-content">
@@ -84,7 +97,11 @@
 
       <!--delete confirmation modal-->
     </section>
+    <footer id="sl-footer">
+      <p>Copyright &#169; <a href="https://amritchahal.com" >Amrit Chahal</a></p>
+      </footer>
   </body>
+
   
   <script type="text/javascript" src="./main.js"></script>
 </html>

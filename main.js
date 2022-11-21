@@ -1,6 +1,6 @@
 //select editorDiv
 
-const codeUrlPrefix = 'http://127.0.0.1:5500?code=';
+const codeUrlPrefix = 'https://sharedlist.app?code=';
 const editorDiv = document.querySelector('#sl-checklist-container');
 const checkListHeading = document.querySelector('#sl-checklist-heading');
 const saveBtn = document.querySelector('#sl-save-btn');
@@ -35,6 +35,7 @@ const shareModalReadWriteBtn = document.querySelector(
 const shareModalCloseBtn = document.querySelector('#sl-share-modal-close-btn');
 const shareLinkCopyBtn = document.querySelector('#sl-copy-link-btn');
 const shareLinkBox = document.querySelector('#sl-share-link-box');
+const loadingSpinner = document.querySelector('#sl-loading-spinner');
 
 const stateKey = 'Active_State';
 const checklistsKey = 'User_Checklists';
@@ -105,6 +106,8 @@ window.onload = async function () {
   } else {
     changeActiveState('checklist', changeActiveStateCallback);
   }
+  loadingSpinner.style.display = 'none';
+
 };
 
 window.onclick = function (event) {
